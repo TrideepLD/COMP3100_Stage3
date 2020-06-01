@@ -124,7 +124,7 @@ public class Client {
 				} else if (algorithmType.equals("wf")) {
 					sendTo = algo.worstFit(job);
 					send("SCHD " + job.id + " " + sendTo.type + " " + sendTo.id);
-				} else if (algorithmType.equals("sj")) {
+				} else if (algorithmType.equals("fs")) {
 					sendTo = algo.sjf(job);
 					send("SCHD " + job.id + " " + sendTo.type + " " + sendTo.id);
 				} else {
@@ -243,8 +243,8 @@ public class Client {
 					ourClient.algorithmType = "wf";
 				} else if (args[1].equals("ff")) {
 					ourClient.algorithmType = "ff";
-				} else if (args[1].equals("sj")) {
-					ourClient.algorithmType = "sj";
+				} else if (args[1].equals("fs")) {
+					ourClient.algorithmType = "fs";
 				}
 			}
 		}

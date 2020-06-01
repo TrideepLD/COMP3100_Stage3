@@ -95,41 +95,15 @@ public class Algo {
 		return null;
 	}
 
-	public Server sjf(Job job) {
+	public Server firstShortJob(Job job) {
+		
 		/*
 
 			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			++++++++++++++++++++++TIME COMPLEXITY CHANGE BELOW++++++++++++++++++++++++++++++
+			++++++++++++++++++++++++First Implementation Below++++++++++++++++++++++++++++++
 			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 		*/
-
-		// int minAvail = Integer.MAX_VALUE;
-		// Server newServer = null;
-
-		// for (Server serv : servers) {
-		// 	if ((serv.coreCount >= job.cpuCores && serv.memory >= job.memory && serv.disk >= job.disk && serv.availableTime < minAvail 
-		// 		&& (serv.state == 0 || serv.state == 1 || serv.state == 2 || serv.state == 3))) {
-		// 		// The fitness value of a job to a server is defined as the difference between the number of cores the job requires and that in the server.
-		// 			minAvail = serv.availableTime;
-		// 			// found = true;
-		// 			newServer = serv;
-		// 			return newServer;
-		// 	}
-
-		// }
-		// // We only want to get here if there is nothing calculated above.
-		// Server servAlt = null;
-		// for (Server serv : xmlServers) {
-		// 	// int fitnessValue = serv.coreCount - job.cpuCores;
-		// 	if (serv.coreCount >= job.cpuCores && serv.disk >= job.disk && serv.memory >= job.memory) {
-		// 		servAlt = serv;
-		// 		servAlt.id = 0; // If this isn't zero, server thinks it doesn't exist.
-		// 		return servAlt;
-		// 	}
-		// }
-		// return null;
-
 
 		Server[] sortedServers = sortByTime(xmlServers);
 
@@ -161,6 +135,40 @@ public class Algo {
 		}
 		return null;
 
+		/*
+
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			+++++++++++++++++++++++Second Implementation Below++++++++++++++++++++++++++++++
+			++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		*/
+
+		// int minAvail = Integer.MAX_VALUE;
+		// Server newServer = null;
+
+		// for (Server serv : servers) {
+		// 	if ((serv.coreCount >= job.cpuCores && serv.memory >= job.memory && serv.disk >= job.disk && serv.availableTime < minAvail 
+		// 		&& (serv.state == 0 || serv.state == 1 || serv.state == 2 || serv.state == 3))) {
+		// 		// The fitness value of a job to a server is defined as the difference between the number of cores the job requires and that in the server.
+		// 			minAvail = serv.availableTime;
+		// 			// found = true;
+		// 			newServer = serv;
+		// 			return newServer;
+		// 	}
+
+		// }
+		// // We only want to get here if there is nothing calculated above.
+		// Server servAlt = null;
+		// for (Server serv : xmlServers) {
+		// 	// int fitnessValue = serv.coreCount - job.cpuCores;
+		// 	if (serv.coreCount >= job.cpuCores && serv.disk >= job.disk && serv.memory >= job.memory) {
+		// 		servAlt = serv;
+		// 		servAlt.id = 0; // If this isn't zero, server thinks it doesn't exist.
+		// 		return servAlt;
+		// 	}
+		// }
+		// return null;
+
 	}
 
 	/*
@@ -182,6 +190,7 @@ public class Algo {
 		return servArr;
 	}
 
+	//sort by Time
 	public Server[] sortByTime(Server[] servArr) {
 		int n = servArr.length;
 		for (int i = 0; i < n - 1; i++) {
