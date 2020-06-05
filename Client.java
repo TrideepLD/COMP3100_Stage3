@@ -125,7 +125,7 @@ public class Client {
 					sendTo = algo.worstFit(job);
 					send("SCHD " + job.id + " " + sendTo.type + " " + sendTo.id);
 				} else if (algorithmType.equals("fs")) {
-					sendTo = algo.sjf(job);
+					sendTo = algo.firstShortestJob(job);
 					send("SCHD " + job.id + " " + sendTo.type + " " + sendTo.id);
 				} else {
 					String[] jobData = globalString.split("\\s+");
